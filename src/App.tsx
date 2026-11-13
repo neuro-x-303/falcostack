@@ -10,6 +10,15 @@ import { HostingPage } from '@/pages/HostingPage';
 import { LiveSyncPage } from '@/pages/LiveSyncPage';
 import { EdgePricingPage } from '@/pages/EdgePricingPage';
 
+const ADMIN_PORTAL_URL = 'https://falcostack-admin.vercel.app/';
+
+const ExternalRedirect: React.FC<{ url: string }> = ({ url }) => {
+  useEffect(() => {
+    window.location.href = url;
+  }, [url]);
+  return null;
+};
+
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -35,6 +44,8 @@ export function App() {
           <Route path="/hosting" element={<HostingPage />} />
           <Route path="/live-sync" element={<LiveSyncPage />} />
           <Route path="/edge-pricing" element={<EdgePricingPage />} />
+          <Route path="/login" element={<ExternalRedirect url={ADMIN_PORTAL_URL} />} />
+          <Route path="/signup" element={<ExternalRedirect url={ADMIN_PORTAL_URL} />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
       </Layout>

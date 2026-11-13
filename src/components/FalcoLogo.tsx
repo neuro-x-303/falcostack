@@ -1,0 +1,240 @@
+import React from 'react';
+
+interface FalcoLogoProps {
+  className?: string;
+  size?: number | string;
+  accentColor?: string;
+}
+
+export const FalcoLogo: React.FC<FalcoLogoProps> = ({
+  className = '',
+  size = 32,
+  accentColor = '#facc15',
+}) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 100 100"
+      width={size}
+      height={size}
+      className={`shrink-0 ${className}`}
+      fill="none"
+    >
+      <defs>
+        {/* Glow Filters */}
+        <filter id="fl-glow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="2.5" result="blur" />
+          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+        <filter id="fl-red-glow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="1.5" result="glow" />
+          <feComposite in="SourceGraphic" in2="glow" operator="over" />
+        </filter>
+
+        {/* Golden Yellow Hawk Gradients */}
+        <linearGradient id="fl-hawk-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#fef08a" />
+          <stop offset="45%" stopColor="#facc15" />
+          <stop offset="100%" stopColor="#eab308" />
+        </linearGradient>
+
+        <linearGradient id="fl-wing-gold" x1="20%" y1="0%" x2="80%" y2="100%">
+          <stop offset="0%" stopColor="#fffbeb" />
+          <stop offset="35%" stopColor="#fde047" />
+          <stop offset="85%" stopColor="#eab308" />
+          <stop offset="100%" stopColor="#ca8a04" />
+        </linearGradient>
+
+        <linearGradient id="fl-beak-gold" x1="0%" y1="0%" x2="100%" y2="50%">
+          <stop offset="0%" stopColor="#fef9c3" />
+          <stop offset="60%" stopColor="#facc15" />
+          <stop offset="100%" stopColor="#b45309" />
+        </linearGradient>
+
+        {/* Hexagon Border Gradient */}
+        <linearGradient id="fl-hex-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#facc15" stopOpacity="0.9" />
+          <stop offset="50%" stopColor="#eab308" stopOpacity="0.4" />
+          <stop offset="100%" stopColor="#ca8a04" stopOpacity="0.85" />
+        </linearGradient>
+
+        {/* FX Monogram Gradient */}
+        <linearGradient id="fl-fx-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop offset="100%" stopColor="#cbd5e1" />
+        </linearGradient>
+
+        {/* Hexagon Background Gradient */}
+        <radialGradient id="fl-hex-bg" cx="50%" cy="45%" r="55%">
+          <stop offset="0%" stopColor="#1e1b12" stopOpacity="0.9" />
+          <stop offset="70%" stopColor="#0b0a07" stopOpacity="0.95" />
+          <stop offset="100%" stopColor="#030407" stopOpacity="1" />
+        </radialGradient>
+      </defs>
+
+      {/* Hexagon Backdrop Fill */}
+      <polygon
+        points="50,5 91,27.5 91,72.5 50,95 9,72.5 9,27.5"
+        fill="url(#fl-hex-bg)"
+      />
+
+      {/* Inner Hexagon Shadow Ring */}
+      <polygon
+        points="50,9 87,30 87,70 50,91 13,70 13,30"
+        stroke="#facc15"
+        strokeWidth="0.8"
+        strokeOpacity="0.25"
+        fill="none"
+      />
+
+      {/* Outer Hexagon Border */}
+      <polygon
+        points="50,5 91,27.5 91,72.5 50,95 9,72.5 9,27.5"
+        stroke="url(#fl-hex-grad)"
+        strokeWidth="2.4"
+        strokeLinejoin="round"
+        fill="none"
+      />
+
+      {/* Hexagon Corner Tech Accents */}
+      <circle cx="50" cy="5" r="1.5" fill="#facc15" />
+      <circle cx="91" cy="27.5" r="1.5" fill="#facc15" />
+      <circle cx="91" cy="72.5" r="1.5" fill="#facc15" />
+      <circle cx="50" cy="95" r="1.5" fill="#facc15" />
+      <circle cx="9" cy="72.5" r="1.5" fill="#facc15" />
+      <circle cx="9" cy="27.5" r="1.5" fill="#facc15" />
+
+      {/* === HAWK IN YELLOW: NECK, BEAK, EYE, ONE UPWARD WING === */}
+      <g id="hawk-figure">
+        {/* Upward Wing - Sweeping dynamically towards top of hexagon */}
+        {/* Primary Feathers (Top Tier) */}
+        <path
+          d="M48,54 C44,45 37,28 34,12 C40,20 45,28 50,38 Z"
+          fill="url(#fl-wing-gold)"
+        />
+        {/* Secondary Feather Tier */}
+        <path
+          d="M44,55 C40,48 31,33 27,20 C32,28 39,37 45,46 Z"
+          fill="#eab308"
+        />
+        {/* Tertiary Feather Tier */}
+        <path
+          d="M40,57 C36,51 27,40 22,29 C27,36 34,44 41,50 Z"
+          fill="#ca8a04"
+        />
+        {/* Fourth Feather Accent */}
+        <path
+          d="M37,60 C32,54 24,47 18,39 C23,45 30,51 38,55 Z"
+          fill="#a16207"
+          opacity="0.8"
+        />
+
+        {/* Hawk Neck & Chest Contour (Only neck is visible below head) */}
+        <path
+          d="M46,41 C48,41 54,42 59,43 C56,48 53,55 51,64 C47,68 42,71 36,73 C39,67 43,62 46,55 Z"
+          fill="url(#fl-hawk-gold)"
+        />
+
+        {/* Hawk Head & Brow */}
+        <path
+          d="M47,41 C52,40 59,41 66,45 C65,47 62,49 59,49 C54,49 50,47 47,41 Z"
+          fill="#fef08a"
+        />
+
+        {/* Hawk Sharp Curved Beak */}
+        <path
+          d="M66,45 C73,47 79,51 81,56 C77,57 73,55 70,53 C67,52 64,52 61,52 C63,50 65,48 66,45 Z"
+          fill="url(#fl-beak-gold)"
+        />
+        {/* Lower Beak hook edge */}
+        <path
+          d="M70,53 C74,54 78,57 81,56 C79,59 75,59 72,57 C68,55 65,54 62,54 Z"
+          fill="#92400e"
+        />
+
+        {/* Hawk Eye Socket & Brow Contour */}
+        <polygon
+          points="57,45 62,47 58,49 54,47"
+          fill="#1c1917"
+        />
+
+        {/* Eye Outline */}
+        <ellipse
+          cx="58"
+          cy="47"
+          rx="2.8"
+          ry="1.8"
+          fill="#292524"
+          stroke="#facc15"
+          strokeWidth="0.6"
+        />
+
+        {/* RED DOT INSIDE THE EYE */}
+        <circle
+          cx="58"
+          cy="47"
+          r="1.2"
+          fill="#ef4444"
+          filter="url(#fl-red-glow)"
+        />
+        <circle
+          cx="58"
+          cy="47"
+          r="0.5"
+          fill="#ffffff"
+        />
+      </g>
+
+      {/* === LETTER F WITH X (FX) INSIDE THE HEXAGON === */}
+      <g id="fx-monogram" transform="translate(42, 63)">
+        {/* Monogram Backdrop Shadow for Contrast */}
+        <path
+          d="M0,0 L14,0 L14,4 L5,4 L5,8 L12,8 L12,12 L5,12 L5,20 L0,20 Z"
+          fill="#0c0a09"
+          opacity="0.6"
+          transform="translate(-1, 0)"
+        />
+
+        {/* Letter 'F' */}
+        <path
+          d="M0,0 L13,0 L13,3.6 L4.4,3.6 L4.4,7.6 L11.5,7.6 L11.5,11.2 L4.4,11.2 L4.4,19 L0,19 Z"
+          fill="url(#fl-fx-grad)"
+        />
+        {/* Top Accent Cut on F */}
+        <polygon points="10,0 13,0 13,3.6 11.5,3.6" fill="#facc15" />
+
+        {/* Letter 'X' - Intersecting beside/with F */}
+        <g transform="translate(13.5, 0)">
+          {/* Main forward stroke of X */}
+          <path
+            d="M0,0 L4.2,0 L15,19 L10.8,19 Z"
+            fill="url(#fl-fx-grad)"
+          />
+          {/* Crossing backward stroke of X */}
+          <path
+            d="M10.8,0 L15,0 L4.2,19 L0,19 Z"
+            fill="url(#fl-fx-grad)"
+          />
+          {/* Center Intersection Highlight in Accent Yellow */}
+          <polygon
+            points="6.3,8.4 8.7,8.4 9.5,10.6 7.1,10.6"
+            fill="#facc15"
+          />
+        </g>
+      </g>
+
+      {/* Dynamic Accent Lighting */}
+      <circle
+        cx="50"
+        cy="5"
+        r="6"
+        fill={accentColor}
+        opacity="0.25"
+        filter="url(#fl-glow)"
+      />
+    </svg>
+  );
+};
+
+export default FalcoLogo;
+

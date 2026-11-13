@@ -50,7 +50,7 @@ const PAYLOAD_SAMPLES = {
     label: 'Adaptive Cart',
     doc: `{
   "cartId": "crt_8831a",
-  "currency": "USD",
+  "currency": "INR",
   "items": [
     { "sku": "NVME-PRO", "qty": 2, "tier": "edge" }
   ],
@@ -58,7 +58,7 @@ const PAYLOAD_SAMPLES = {
 }`,
     inferred: `interface AdaptiveCart {
   cartId: string;          // Primary Anycast Key
-  currency: "USD" | string;
+  currency: "INR" | string;
   items: Array<{ sku: string; qty: number; tier: string }>;
   liveSyncVersion: number; // Auto-CRDT Monotonic Clock
 }`,

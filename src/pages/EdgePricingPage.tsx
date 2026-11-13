@@ -11,7 +11,7 @@ import SpecularButton from '@/components/SpecularButton';
 const TIERS = [
   {
     name: 'Developer Edge',
-    price: '$0',
+    price: '₹0',
     period: '/ month',
     accent: '#34d399',
     summary: 'Everything needed to prototype Database, Dynamic DB, APIs, Hosting, and Live Sync.',
@@ -24,7 +24,7 @@ const TIERS = [
   },
   {
     name: 'Production Scale',
-    price: '$49',
+    price: '₹4,099',
     period: '/ month + usage',
     accent: '#60a5fa',
     summary: 'Multi-region high-availability clusters with automatic read replicas and vector search.',
@@ -83,7 +83,8 @@ export const EdgePricingPage: React.FC = () => {
     };
   }, []);
 
-  const estimatedCost = Math.max(29, Math.round(monthlyMillions * 1.4 + storageGb * 0.25));
+  const estimatedCostUsd = Math.max(29, Math.round(monthlyMillions * 1.4 + storageGb * 0.25));
+  const estimatedCostInr = estimatedCostUsd * 83;
 
   const handleModuleClick = (clicked: MagicBentoItem) => {
     const match = MODULE_BENTO_ITEMS.find((m) => m.id === clicked.id);
@@ -125,7 +126,7 @@ export const EdgePricingPage: React.FC = () => {
               <div className="rounded-2xl border border-sky-400/30 bg-sky-500/10 px-5 py-3 text-right">
                 <div className="font-mono text-xs text-sky-200">Estimated Monthly Total</div>
                 <div className="font-[family-name:var(--font-display)] text-3xl font-bold text-white">
-                  ${estimatedCost}
+                  ₹{estimatedCostInr.toLocaleString('en-IN')}
                   <span className="text-sm font-normal text-zinc-400"> / mo</span>
                 </div>
               </div>

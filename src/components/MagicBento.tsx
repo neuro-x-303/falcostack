@@ -333,7 +333,7 @@ const BARS = [42, 58, 49, 71, 63, 88, 76];
 const DashboardVisual: React.FC = () => (
   <div className="magic-bento__bars">
     <div className="magic-bento__figure">
-      <span className="magic-bento__figure-value">$48.2k</span>
+      <span className="magic-bento__figure-value">₹48.2k</span>
       <span className="magic-bento__figure-note">Weekly</span>
     </div>
     <div className="magic-bento__bars-plot">

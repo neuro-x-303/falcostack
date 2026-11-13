@@ -22,7 +22,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
   primaryCtaLabel = 'Launch Console',
   primaryCtaPath = '/edge-pricing',
   onPrimaryAction,
-  secondaryCtaLabel = 'Explore Preset Mesh',
+  secondaryCtaLabel = 'Explore Stack Mesh',
   secondaryCtaPath = '/edge-pricing',
   children,
 }) => {
@@ -31,24 +31,6 @@ export const PageHero: React.FC<PageHeroProps> = ({
   return (
     <section className="relative pt-10 pb-14 md:pt-16 md:pb-20">
       <div className="mx-auto flex max-w-5xl flex-col items-center text-center">
-        {/* Preset & System Telemetry Pill */}
-        <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-black/50 px-4 py-1.5 text-xs font-medium text-zinc-200 backdrop-blur-md">
-          <span
-            className="h-2 w-2 rounded-full animate-pulse"
-            style={{
-              backgroundColor: page.accentColor,
-              boxShadow: `0 0 12px ${page.accentColor}`,
-            }}
-          />
-          <span className="font-mono uppercase tracking-wider text-zinc-400">
-            Preset: <strong className="text-white">{page.presetLabel}</strong>
-          </span>
-          <span className="text-zinc-600">•</span>
-          <span>{page.badge}</span>
-          <span className="hidden text-zinc-600 sm:inline">•</span>
-          <span className="hidden font-mono text-zinc-300 sm:inline">{page.latency}</span>
-        </div>
-
         {/* Top Headline: FalcoStack in Shatter Type */}
         <h1 className="mb-3 text-5xl sm:text-7xl md:text-8xl leading-none">
           <ShatterHeadline text="FalcoStack" accentColor={page.accentColor} />
